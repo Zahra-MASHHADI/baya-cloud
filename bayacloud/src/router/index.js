@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import PlayListPage from 'src/views/PlayListPage.vue'
-import PlayListDetail from 'src/views/PlayListDetail.vue'
+import PlayListPage from '../views/PlayListPage.vue'
+import PlayListDetail from '../views/PlayListDetail.vue'
 
 // Define routes
 const routes = [
@@ -11,8 +11,8 @@ const routes = [
     component: PlayListPage,
   },
   {
-    path: '/playlist/:id',
-    name: 'About',
+    path: '/playlists/:id',
+    name: 'playlist',
     component: PlayListDetail,
   },
 ]

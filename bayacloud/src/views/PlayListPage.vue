@@ -1,10 +1,15 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import PlayList from "../components/PlayList/PlayList.vue";
+import NewPlaylis from "../components/Modals/NewPlaylis.vue";
+import axios from "axios";
 const playlists = ref([]);
+const newPlaylistModal = ref(false);
+
 const fetchPlayList = async () => {
   try {
     const response = await axios.get('http://localhost:3000/playlists')
+    
     playlists.value = response.data
   } catch (error) {
     console.error('Error fetching users:', error)
@@ -29,6 +34,7 @@ onMounted(() => {
       <span class="text-cyan-500">آپلود</span>
     </button>
     <button
+    @click="newPlaylistModal.showModal()"
       class="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white rounded-2xl hover:bg-cyan-600 transition-colors"
     >
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" class="size-6">
@@ -66,12 +72,15 @@ onMounted(() => {
          
           class="bg-white rounded-lg p-4 hover:shadow-md transition-shadow"
         >
-        <router-link :to="{ name: 'palylist', params: { id: item.id } }">
+        <router-link :to="`/playlists/${+item.id}`">
         <PlayList :item="item"   />
         </router-link>
         </div>
       </div>
     </div>
+    <dialog ref="newPlaylistModal" class="modal modal-middle">
+    <NewPlaylis />
+    </dialog>
 </template>
 <style >
     
