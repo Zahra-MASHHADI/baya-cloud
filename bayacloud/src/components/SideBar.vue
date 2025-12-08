@@ -120,10 +120,7 @@
         <span>کانال</span>
       </a>
 
-      <a
-        href="#"
-        class="flex items-center gap-3 px-4 py-3 hover:text-cyan-500 hover:bg-white rounded-lg font-medium"
-      >
+      <router-link to="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -140,7 +137,7 @@
         </svg>
 
         <span>پلی لیست</span>
-      </a>
+      </router-link>
 
       <a
         href="#"
