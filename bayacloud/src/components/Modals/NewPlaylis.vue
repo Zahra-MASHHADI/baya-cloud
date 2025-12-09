@@ -4,7 +4,7 @@ import { ref } from "vue";
 const selectedTab = ref("media");
 </script>
 <template>
-  <div class="bg-neutral-100 w-1/2 rounded-xl p-4 px-8">
+  <div class="bg-neutral-100 w-1/2 rounded-xl p-4 px-8 max-w-none modal-box">
     <div class="flex justify-between border-b-2 pb-4 border-neutral-400">
       <span> پلی لیست جدید </span>
       <span
@@ -62,6 +62,22 @@ const selectedTab = ref("media");
             </p>
             </label>
         </div>
+      </div>
+      <div v-show="selectedTab === 'media'">
+          <div class="grid grid-cols-4 bg-cyan-50">
+            <p>
+              نام
+            </p>
+            <p>
+              زمان نمایش
+            </p>
+            <p>
+              نوع
+            </p>
+            <p>
+              سایز
+            </p>
+          </div>
       </div>
       <div
         class="flex items-center justify-start text-neutral-400 border-b pb-6"
