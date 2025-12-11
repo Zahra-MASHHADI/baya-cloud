@@ -1,5 +1,12 @@
-<script setup></script>
+<script setup>
+  import { computed, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+  const router = ref(useRoute());
+  const name = computed(() => router.value.name)
+</script>
 <template>
+ 
   <div
     class="flex items-center justify-between mb-8 bg-white py-4 px-6 rounded-xl shadow-xs"
   >
@@ -20,7 +27,7 @@
              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
 
-      <span class="text-sm text-gray-600">کانال‌ها</span>
+      <span class="text-sm text-gray-600">{{name}}</span>
     </div>
     <div class="flex items-center gap-3">
       <!-- setting icon -->

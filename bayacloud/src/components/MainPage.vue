@@ -20,8 +20,7 @@ import SideBar from "./SideBar.vue";
       <div>
         <router-view /> 
       </div>
-      <!-- <MainPlayList /> -->
-      
+
     </div>
   </div>
 </template>
