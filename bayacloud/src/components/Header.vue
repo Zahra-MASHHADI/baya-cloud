@@ -8,7 +8,7 @@ import { useRoute } from 'vue-router';
 <template>
  
   <div
-    class="flex items-center justify-between mb-8 bg-white py-4 px-6 rounded-xl shadow-xs"
+    class="flex items-center justify-between lg:mb-8 xs:mb-0 lg:bg-white py-4 px-6 rounded-xl lg:shadow-xs"
   >
     <div class="flex items-center gap-2">
         <!-- channel icon -->
@@ -29,7 +29,7 @@ import { useRoute } from 'vue-router';
 
       <span class="text-sm text-gray-600">{{name}}</span>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 lg:block hidden">
       <!-- setting icon -->
       <button class="size-6 hover:bg-gray-100 rounded-lg">
         <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">

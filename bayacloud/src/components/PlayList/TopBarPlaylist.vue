@@ -2,9 +2,9 @@
 
 </script>
 <template >
-   <div class="grid grid-cols-6 items-center justify-between mb-6">
-      <div class="col-span-3 flex gap-4">
-        <div class="w-3/5 relative ">
+   <div class="grid grid-cols-6 content-start lg:bg-inherit bg-white rounded-lg  xs:p-4 sm:p-4 md:p-4 lg:p-0 p-4 items-center justify-between mb-6">
+      <div class="lg:col-span-3 col-span-full flex  gap-4">
+        <div class="lg:w-3/5 w-full relative ">
           <input
             class="text-lg font-semibold py-3 rounded-xl border-neutral-400 border w-full bg-white px-2 relative"
             placeholder="نام محتوای پخشی"
@@ -14,7 +14,7 @@
           </svg>
 
         </div>
-        <div class='w-2/5'>
+        <div class='lg:block hidden  w-2/5'>
           <span>کل زمان پخش</span>
           <div class=" px-3 py-1 rounded">
             0:00:44
@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div class=" col-span-2 items-center gap-4">
+      <div class=" lg:col-span-2 col-span-3 lg:mt-0 mt-2 items-center gap-4">
         <div class=" items-center gap-2 text-sm text-gray-600"></div>
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-green-500 rounded-full"></span>
@@ -30,7 +30,7 @@
         </div>
         <div class="text-xs text-gray-400">آخرین آنلاین : 13 مهر - 12:30</div>
       </div>
-      <div class="flex items-center gap-4 justify-evenly">
+      <div class="flex lg:col-span-1 col-span-3 lg:mt-0 mt-2 items-center gap-4 lg:justify-evenly justify-end">
         <!-- eye icon  -->
         <svg
           xmlns="http://www.w3.org/2000/svg"

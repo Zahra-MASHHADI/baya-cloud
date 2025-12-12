@@ -7,12 +7,7 @@ const props = defineProps({
 
 const emit = defineEmits(["delete", "play", "download", "toggleFavorite"]);
 
-const isFavorite = ref(props.isFavorite);
 
-const toggleFavorite = () => {
-    isFavorite.value = !isFavorite.value;
-    emit("toggleFavorite", isFavorite.value);
-};
 </script>
 <template>
     <div class="bg-white rounded-2xl p-6 hover:shadow-sm transition-shadow">
@@ -20,7 +15,7 @@ const toggleFavorite = () => {
             <!-- Right - Title & Status -->
             <div class="flex items-center gap-4">
                 <!-- Thumbnail Icon -->
-                <div class="w-12 h-12 bg-cyan-50 rounded-lg flex items-center justify-center">
+                <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
                     <svg class="size-7" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="16" y="8" width="32" height="48" rx="10" stroke="#002B2B" stroke-width="4" />
                         <rect x="6" y="16" width="10" height="32" rx="5" stroke="#002B2B" stroke-width="4" />
@@ -36,16 +31,15 @@ const toggleFavorite = () => {
                 </div>
                 <div class="text-right">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">{{ item.title }}</h3>
-                    <span class="text-sm px-3 py-1 rounded-full inline-block" :class="item.status === 'منتشر شده' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'">
-                        {{ item.status }}
+                    <span class="text-sm px-3 py-1 rounded-full inline-block" :class="item.status ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'">
+                        {{ item.status ? 'منتشر شده' : 'منتشر نشده' }}
                     </span>
                 </div>
             </div>
-            <!-- Center - Avatars & Views -->
       
-            <!-- Center - Avatars & Views -->
-            <div class="flex items-center gap-4">
-                <!-- Avatars Stack -->
+            <!-- Center - Avatars -->
+            <div class="lg:flex hidden items-center gap-4">
+    
                 <div class="flex items-center">
                     <div v-for="(avatar, index) in item.avatars.slice(0, 3)" :key="index" class="relative  flex items-center justify-center rounded-full border-2 border-neutral-100 dark:border-neutral-700 size-12" :class="[index !== 0 && `!-ms-7 z-[${index}]` , ` ${avatar.color}`]" >
                        <p class="capitalize text-xl"> 
@@ -67,8 +61,7 @@ const toggleFavorite = () => {
                 </div>
 
             </div>
-            <div class="flex items-center gap-4">
-                <!-- Avatars Stack -->
+            <div class="lg:flex hidden items-center gap-4">
                 <div class="flex items-center">
                     <div v-for="(avatar, index) in item.pictures.slice(0, 3)" :key="index" class="relative" :class="[index !== 0 && `!-ms-7 z-[${index}]`]" >
                         <img :src="avatar" :alt="`Avatar ${index + 1}`" class="size-12 rounded-full border-2 border-white object-cover " />
@@ -91,7 +84,7 @@ const toggleFavorite = () => {
 
             <!-- Action Icons -->
             <div class="flex gap-2 items-center justify-end">
-                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer" @click.stop="item.like = !item.like">
+                <button class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer" @click.stop="item.like = !item.like">
                     <svg class="size-8" fill="none" :class="[item.like ? 'stroke-yellow-500 fill-yellow-500' : 'stroke-black']" viewBox="0 0 24 24">
                         <path
                             stroke-linecap="round"
@@ -100,7 +93,7 @@ const toggleFavorite = () => {
                             d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                     </svg>
                 </button>
-                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
+                <button class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
                     <svg
                         class="size-8"
                         fill="#000000"
@@ -127,7 +120,7 @@ const toggleFavorite = () => {
                         </g>
                     </svg>
                 </button>
-                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
+                <button class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
                     <svg class="size-8" fill="none" viewBox="0 0 24 24">
                         <path
                             stroke-linecap="round"
@@ -138,7 +131,7 @@ const toggleFavorite = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </button>
-                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
+                <button class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
                     <svg class="size-8 stroke-red-500" fill="none" viewBox="0 0 24 24">
                         <path
                             stroke-linecap="round"

@@ -1,20 +1,22 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import ChannelDetail from "../components/Channel/ChannelCard.vue";
 import { useRouter } from "vue-router";
 import SubHeader from "../components/SubHeader.vue";
+import NewPlaylis from "../components/Modals/NewPlaylis.vue";
 const router = useRouter();
+const newPlaylistModal = ref(false);
+const tabData = ref('all');
 const playlists = ref([
   {
     id: 1,
     title: "پلی لیست",
-    status: "منتشر شده",
-    views: 4,
+    status: 1,
     avatars: [
       { name: "B", color: "bg-red-200" },
       { name: "a", color: "bg-orange-200" },
       { name: "u", color: "bg-green-200" },
-      { name: "g", color: "bg-sky-200" },
+      { name: "g", color: "bg-blue-200" },
       { name: "s", color: "bg-violet-200" },
       { name: "o", color: "bg-purple-200" },
     ],
@@ -29,13 +31,12 @@ const playlists = ref([
   {
     id: 2,
     title: "پلی لیست",
-    status: "منتشر نشده",
-    views: 0,
+    status: 0,
     avatars: [
       { name: "B", color: "bg-red-200" },
       { name: "a", color: "bg-orange-200" },
       { name: "u", color: "bg-green-200" },
-      { name: "g", color: "bg-sky-200" },
+      { name: "g", color: "bg-blue-200" },
     ],
     pictures: [
       "https://i.pravatar.cc/150?img=1",
@@ -47,11 +48,10 @@ const playlists = ref([
   {
     id: 3,
     title: "پلی لیست",
-    status: "منتشر نشده",
-    views: 6,
+    status: 0,
     avatars: [
       { name: "a", color: "bg-orange-200" },
-      { name: "s", color: "bg-sky-200" },
+      { name: "s", color: "bg-blue-200" },
     ],
     pictures: [
       "https://picsum.photos/300/200",
@@ -60,17 +60,32 @@ const playlists = ref([
     like: 0,
   },
 ]);
+const filtredPlaylist = computed(()=>{
+  let filtred = playlists.value;
+  
+  if(tabData.value === 'publish'){
+    filtred = filtred.filter(item => item.status);
+  }
+  if(tabData.value === 'drafts'){
+    filtred = filtred.filter(item => !item.status );
+  }
+  return filtred;
+})
+
 function changeRoute(id) {
   router.push(`/channel/${id}`);
+}
+function changeTab(item){
+  tabData.value = item
 }
 </script>
 <template>
   <div>
-    <SubHeader @openModal="newPlaylistModal.showModal()" />
+    <SubHeader @openModal="newPlaylistModal.showModal()" @changeTab="changeTab" />
     <!-- Playlist Items -->
     <div class="space-y-2">
       <div
-        v-for="item in playlists"
+        v-for="item in filtredPlaylist"
         :key="item.id"
    
       >
@@ -80,5 +95,8 @@ function changeRoute(id) {
       </div>
     </div>
   </div>
+    <dialog ref="newPlaylistModal" class="modal modal-middle">
+    <NewPlaylis @closeModal="newPlaylistModal.close()" />
+  </dialog>
 </template>
   

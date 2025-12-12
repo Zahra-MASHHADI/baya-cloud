@@ -44,14 +44,14 @@ function addItem() {
 </script>
 <template>
   <!-- Main Content -->
-  <div class="p-6">
+  <div class="px-6 xs:pt-0 sm:pt-0 xs:px-6 sm:px-6 md:px-6 lg:p-6">
     <!-- Top Bar -->
     <TopBarPlaylist />
 
     <!-- Content Area -->
     <div class="grid grid-cols-3 gap-6 rounded-lg">
       <!-- Items List -->
-      <div class="space-y-4 mb-6 col-span-2">
+      <div class="space-y-4 mb-6 lg:col-span-2 col-span-full">
         <div
           v-for="(item, index) in items"
           :key="item.id"
@@ -67,11 +67,11 @@ function addItem() {
           </div>
           <div class="flex items-center gap-2 col-span-2">
             <select
-              class="border border-neutral-300 rounded rounded-xl w-1/2 p-4 text-sm"
+              class="border border-neutral-300 rounded rounded-xl lg:w-1/2 w-3/4 p-4 text-sm"
             >
               <option>{{ item.duration }}</option>
             </select>
-            <div>ویدیو</div>
+            <div class="lg:text-base text-xs">ویدیو</div>
           </div>
 
           <button
@@ -95,7 +95,7 @@ function addItem() {
         </div>
         <!-- add button  -->
         <div
-          class="bg-cyan-100/50 rounded-2xl cursor-pointer w-fit p-3 px-8 text-cyan-500"
+          class="bg-blue-100/50 rounded-2xl cursor-pointer w-fit p-3 px-8 text-blue-500"
           @click="addItem"
         >
           افزودن جدید
@@ -103,10 +103,10 @@ function addItem() {
       </div>
 
       <!-- Info Cards -->
-      <div class="bg-white rounded-lg px-4">
+      <div class="bg-white rounded-lg px-4 lg:col-span-1 col-span-full">
         <div class="flex text-center">
-          <span class="border-b w-1/2 p-2 pt-6 border-neutral-400 cursor-pointer" :class="{'border-b-2 !border-cyan-500 text-cyan-500' : display === 'page'}" @click="display = 'page'"> صفحه بندی </span>
-          <span class="border-b w-1/2 p-2 pt-6 border-neutral-400 cursor-pointer" :class="{'border-b-2 !border-cyan-500 text-cyan-500' : display === 'setting'}" @click="display = 'setting'"> تنظیمات </span>
+          <span class="border-b w-1/2 p-2 pt-6 border-neutral-400 cursor-pointer" :class="{'border-b-2 !border-blue-500 text-blue-500' : display === 'page'}" @click="display = 'page'"> صفحه بندی </span>
+          <span class="border-b w-1/2 p-2 pt-6 border-neutral-400 cursor-pointer" :class="{'border-b-2 !border-blue-500 text-blue-500' : display === 'setting'}" @click="display = 'setting'"> تنظیمات </span>
         </div>
         <div v-show="display === 'page'" class="">
           <div>
@@ -118,7 +118,7 @@ function addItem() {
             <input  class="w-full rounded-xl py-4 border-2 border-neutral-300" />
           </div>
           <div class="my-4">
-            <div class="col-span-full px-2 py-4 rounded-t-xl bg-cyan-100/50 border  border-neutral-200">
+            <div class="col-span-full px-2 py-4 rounded-t-xl bg-blue-100/50 border  border-neutral-200">
                 اطلاعات کلی
             </div>
             <div class="flex px-2 py-4 border border-t-0 border-neutral-300">
@@ -150,17 +150,7 @@ function addItem() {
         </div>
       </div>
 
-      <!-- Standards Table -->
-      <!-- <div class="mt-6 border-t pt-6">
-        <table class="w-full text-sm">
-          <tbody>
-            <tr class="border-b">
-              <td class="py-3 text-gray-600">استاندارد</td>
-              <td class="py-3 text-left">هیچ کدام</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
+  
     </div>
   </div>
 </template>

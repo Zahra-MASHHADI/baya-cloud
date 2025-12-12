@@ -9,12 +9,12 @@ import SideBar from "./SideBar.vue";
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 grid grid-cols-5 font-bold" dir="rtl">
+  <div class="min-h-screen bg-gray-50 grid grid-cols-5 content-start font-bold" dir="rtl">
     <!-- Sidebar -->
-    <SideBar @changeDisplay="changeDisplay" />
+    <SideBar @changeDisplay="changeDisplay" class="col-span-full lg:col-span-1" />
 
     <!-- Main Content -->
-    <div class="col-span-4">
+    <div class="lg:col-span-4 col-span-full">
       <!-- Header -->
       <Header />
       <div>

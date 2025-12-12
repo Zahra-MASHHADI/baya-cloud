@@ -4,10 +4,10 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="grid grid-cols-3 items-center gap-4 justify-bet">
+  <div class="grid lg:grid-cols-3 grid-cols-2 items-center gap-4 justify-bet">
     <div class="flex gap-4">
       <div
-        class="bg-cyan-100/50 flex items-center justify-between p-3 rounded-xl"
+        class="bg-blue-100/50 flex items-center justify-between p-3 rounded-xl"
       >
         <svg
           class="size-7"
@@ -56,12 +56,12 @@ const props = defineProps({
       </div>
       <div>
         <h3 class="font-medium text-gray-900">{{ item.title }}</h3>
-        <p class="text-sm text-gray-500">{{ item.status }}</p>
+        <p class="text-sm text-gray-500">{{ +item.status === 1 ? 'پابلیش شده' : 'بدون کانکت' }}</p>
       </div>
     </div>
 
     <!-- Content -->
-    <div class="flex items-center gap-8 text-sm">
+    <div class=" items-center gap-8 text-sm lg:flex hidden">
       <div
         class="flex items-center gap-2 bg-gray-100 p-4 rounded-xl"
         v-if="+item.link > 0"
@@ -80,7 +80,7 @@ const props = defineProps({
       <!-- Action Icons -->
       <div class="flex gap-2 items-center justify-end">
         <button
-          class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+          class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
           @click="item.like = !item.like"
         >
           <svg
@@ -98,7 +98,7 @@ const props = defineProps({
           </svg>
         </button>
         <button
-          class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+          class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
         >
           <svg
             class="size-8"
@@ -135,7 +135,7 @@ const props = defineProps({
           </svg>
         </button>
         <button
-          class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+          class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
         >
           <svg class="size-8" fill="none" viewBox="0 0 24 24">
             <path
@@ -156,7 +156,7 @@ const props = defineProps({
           </svg>
         </button>
         <button
-          class="p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+          class="lg:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
         >
           <svg class="size-8 stroke-red-500" fill="none" viewBox="0 0 24 24">
             <path

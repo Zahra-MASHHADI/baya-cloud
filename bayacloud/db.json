@@ -2,7 +2,7 @@
     "playlists" :[{
     "id": "1",
     "title": "پلی لیست",
-    "status": "بدون کانکت",
+    "status": "0",
     "like": 1,
     "photo": "3",
     "link": "2"
@@ -10,7 +10,7 @@
   {
     "id": "2",
     "title": "پلی لیست",
-    "status": "بدون کانکت",
+    "status": "0",
     "like": 0,
     "photo": "0",
     "link": "0"
@@ -18,7 +18,7 @@
   {
     "id": "3",
     "title": "پلی لیست",
-    "status": "پابلیش شده",
+    "status": "1",
     "like": 0,
     "photo": "0",
     "link": "0"
